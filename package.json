@@ -1,0 +1,25 @@
+{
+	"name": "aoc23",
+	"version": "1.0.0",
+	"description": "Advent of Code 2023",
+	"scripts": {
+		"build": "tsc --pretty",
+		"dev": "tsc --watch --preserveWatchOutput --pretty",
+		"day01": "node --watch --test ./out/day01.js"
+	},
+	"keywords": [
+		"aoc",
+		"advent of code",
+		"2023"
+	],
+	"author": {
+		"email": "mhgibbons@me.com",
+		"name": "Matthew Gibbons",
+		"url": "https://github.com/accuser"
+	},
+	"license": "ISC",
+	"devDependencies": {
+		"@types/node": "^20.10.1",
+		"typescript": "^5.3.2"
+	}
+}
