@@ -1,6 +1,7 @@
 import { reverse } from "./string";
 
-export const NUMBER_REGEX = "zero|one|two|three|four|five|six|seven|eight|nine";
+export const NUMBER_REGEX =
+	/zero|one|two|three|four|five|six|seven|eight|nine|\d/g;
 
 export const from = (s: string) => {
 	if (Number.isNaN(+s)) {

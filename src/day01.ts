@@ -6,22 +6,17 @@ import { NUMBER_REGEX, from, sum } from "./helpers/number.js";
 import { lines, reverse } from "./helpers/string.js";
 
 const DAY = basename(__filename, extname(__filename));
-const FORWARD_REGEX = new RegExp(`${NUMBER_REGEX}|\\d`);
-const REVERSE_REGEX = new RegExp(`${reverse(NUMBER_REGEX)}|\\d`);
 
 const part1 = (input: string) =>
 	lines(input)
-		.map((line) => [line.match(/\d/)![0], reverse(line).match(/\d/)![0]])
-		.map(([a, b]) => from(a) * 10 + from(b))
+		.map((line) => line.match(/\d/g))
+		.map((matches) => from(matches!.at(0)!) * 10 + from(matches!.at(-1)!))
 		.reduce(sum);
 
 const part2 = (input: string) =>
 	lines(input)
-		.map((line) => [
-			line.match(FORWARD_REGEX)![0],
-			reverse(reverse(line).match(REVERSE_REGEX)![0]),
-		])
-		.map(([a, b]) => from(a) * 10 + from(b))
+		.map((line) => line.match(NUMBER_REGEX))
+		.map((matches) => from(matches!.at(0)!) * 10 + from(matches!.at(-1)!))
 		.reduce(sum);
 
 if (require.main === module) {
