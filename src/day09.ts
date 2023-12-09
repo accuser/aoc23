@@ -7,19 +7,17 @@ import { sum } from "./helpers/number";
 
 const DAY = basename(__filename, extname(__filename));
 
+const diff = (sequence: number[]) =>
+	sequence.reduce(
+		(p, c, i, a) => (i ? [...p, a[i] - a[i - 1]] : p),
+		[] as number[]
+	);
+
 const next = (sequence: number[]): number => {
 	if (sequence.every((v) => v === 0)) {
 		return 0;
 	} else {
-		return (
-			sequence.at(-1)! +
-			next(
-				sequence.reduce(
-					(p, c, i, a) => (i ? [...p, a[i] - a[i - 1]] : p),
-					[] as number[]
-				)
-			)
-		);
+		return sequence.at(-1)! + next(diff(sequence));
 	}
 };
 
@@ -27,15 +25,7 @@ const prev = (sequence: number[]): number => {
 	if (sequence.every((v) => v === 0)) {
 		return 0;
 	} else {
-		return (
-			sequence.at(0)! -
-			prev(
-				sequence.reduce(
-					(p, c, i, a) => (i ? [...p, a[i] - a[i - 1]] : p),
-					[] as number[]
-				)
-			)
-		);
+		return sequence.at(0)! - prev(diff(sequence));
 	}
 };
 
