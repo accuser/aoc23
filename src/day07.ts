@@ -178,7 +178,7 @@ if (require.main === module) {
 	const input = readFileSync(resolve(".", "input", DAY)).toString();
 
 	console.log(DAY);
-	// console.log("part 1 =>", part1(input));
+	console.log("part 1 =>", part1(input));
 	console.log("part 2 =>", part2(input));
 }
 
